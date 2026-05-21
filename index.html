@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>憤怒鳥 — Angry Birds Web</title>
+    <meta
+      name="description"
+      content="在瀏覽器上玩的憤怒鳥克隆版：彈弓發射、三種關卡、小鳥技能與物理碰撞。"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        min-height: 100vh;
+        overflow: hidden;
+        background: #1a252f;
+        font-family: "Microsoft JhengHei", "Segoe UI", sans-serif;
+      }
+      #wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 100vh;
+        gap: 8px;
+        padding: 8px;
+      }
+      canvas {
+        display: block;
+        margin: 0 auto;
+        border-radius: 8px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+        touch-action: none;
+        cursor: crosshair;
+      }
+      #hint,
+      #loading {
+        width: 100%;
+        max-width: 960px;
+        text-align: center;
+        line-height: 1.5;
+      }
+      #hint {
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 13px;
+        padding: 0 12px 12px;
+      }
+      #loading {
+        color: #fff;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 120px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrap">
+      <p id="loading">載入遊戲中…</p>
+      <canvas id="game" width="960" height="540" hidden></canvas>
+      <p id="hint" hidden>
+        拖拽彈弓發射小鳥 · 飛行中點擊觸發技能 · R 重置關卡 · ESC 返回選單
+      </p>
+    </div>
+    <script type="module">
+      import { GameCoordinator } from './js/game.js';
+
+      const canvas = document.getElementById('game');
+      const loading = document.getElementById('loading');
+      const hint = document.getElementById('hint');
+
+      const game = new GameCoordinator(canvas);
+      await game.init();
+
+      loading.hidden = true;
+      canvas.hidden = false;
+      hint.hidden = false;
+    </script>
+  </body>
+</html>
