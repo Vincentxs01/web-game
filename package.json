@@ -1,0 +1,12 @@
+{
+  "name": "angry-birds-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Angry Birds clone — HTML5 Canvas game for Vercel static hosting",
+  "scripts": {
+    "dev": "npx --yes serve . -p 3000",
+    "start": "npm run dev"
+  },
+  "keywords": ["angry-birds", "canvas", "game", "vercel"],
+  "license": "MIT"
+}

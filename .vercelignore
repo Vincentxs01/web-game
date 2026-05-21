@@ -1,0 +1,7 @@
+test_venv/
+.sounds/
+__pycache__/
+*.py
+test_*.py
+custom_level.json
+save_data.json
